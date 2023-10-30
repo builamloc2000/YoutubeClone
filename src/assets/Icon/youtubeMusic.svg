@@ -1,4 +1,4 @@
-<svg>
+<svg className='w-6 h-6 mr-5'>
                                 <circle fill="#FF0000" cx="12" cy="12" r="10"></circle>
                                 <polygon fill="#FFFFFF" points="10,14.65 10,9.35 15,12 "></polygon>
                                 <path fill="#FFFFFF"

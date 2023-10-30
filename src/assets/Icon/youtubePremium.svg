@@ -1,4 +1,4 @@
-<svg>
+<svg className='w-6 h-6 mr-5'>
                                 <defs>
                                     <radialGradient cx="5.4%" cy="7.11%" r="107.93%" fx="5.4%" fy="7.11%"
                                         gradientTransform="matrix(.70653 0 0 1 .016 0)">
