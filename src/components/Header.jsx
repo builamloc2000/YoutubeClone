@@ -17,7 +17,7 @@ const Header = () => {
                 </div>
                 <div className="mb-[17px] text-[10px]">VN</div>
             </div>
-            <div className="flex w-3/5 h-10 justify-end items-center">
+            <div className="relative flex w-2/5 h-10 justify-end items-center">
                 <Search />
             </div>
             <div className="flex w-[7%] justify-between items-center ">
