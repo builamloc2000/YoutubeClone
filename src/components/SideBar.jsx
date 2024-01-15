@@ -10,9 +10,11 @@ import SideBarAbout from './sideBar/SideBarAbout'
 import { SideBarAboutBrand } from './sideBar/SideBarAbout'
 import { SideBarAboutPolicy } from './sideBar/SideBarAbout'
 
-const SideBar = () => {
+
+export default function SideBar() {
   return (
-    <div className='w-60'>
+    
+    <div className='w-70 overflow-y-auto pb-14' >
     <SideBarHome/>
     <hr className='ml-3'></hr>
     <SideBarOption/>
@@ -32,9 +34,10 @@ const SideBar = () => {
     <SideBarAboutPolicy/>
     <SideBarAboutBrand/>
     </div>
+    
   )
 }
-export default SideBar
+
 
 
 

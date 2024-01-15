@@ -3,18 +3,25 @@ import Header from "./components/Header";
 import SideBar from "./components/SideBar";
 import Content from "./components/Content";
 
-const App = () => {
+
+
+export default function App() {
+  
+    
   return (
-    <div className="bg-white w-full h-full">
-      <Header />
-      
-      <div className=" flex">
-        <SideBar />
-      
+    <div className='w-full h-full'>
+      <div className="bg-white w-full h-full ">
+        
+        
+        <Header  />
+      </div>
+      <div className=" flex flex-row  max-h-screen  ">
+        <SideBar  />
+
         <Content />
       </div>
     </div>
   );
 };
 
-export default App;
+

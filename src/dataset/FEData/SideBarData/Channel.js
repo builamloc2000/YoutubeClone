@@ -6,7 +6,17 @@ import { ReactComponent as HoangDung } from '../../../assets/avatar/HoangDung.sv
 import { ReactComponent as EssentialTennis } from '../../../assets/avatar/essentialTennis.svg'
 import { ReactComponent as ProgramMosh } from '../../../assets/avatar/programMosh.svg'
 import { ReactComponent as Add } from '../../../assets/icon/add.svg'
-export const ChannelData =[{
+import {ReactComponent as Less} from '../../../assets/icon/less.svg'
+export const ChannelData =[
+    {
+        id: 0,
+        name: '',
+        icon: <Add/>
+    },{
+        id: 1,
+        name: 'Ẩn bớt',
+        icon: <Less/>
+    },{
     id: 9,
     name: 'Web Dev Simplify',
     icon: <WebDev/>
@@ -35,9 +45,37 @@ export const ChannelData =[{
     name: 'Programming with Mosh',
     icon: <ProgramMosh/>
 },{
-    id: 16,
-    name: 'Hiển thị thêm 63 mục',
-    icon: <Add/>
+    id: 14,
+    name: 'Essential Tennis',
+    icon: <EssentialTennis/>
+},{
+    id: 14,
+    name: 'Essential Tennis',
+    icon: <EssentialTennis/>
+},{
+    id: 14,
+    name: 'Essential Tennis',
+    icon: <EssentialTennis/>
+},{
+    id: 14,
+    name: 'Essential Tennis',
+    icon: <EssentialTennis/>
+},{
+    id: 14,
+    name: 'Essential Tennis',
+    icon: <EssentialTennis/>
+},{
+    id: 14,
+    name: 'Essential Tennis',
+    icon: <EssentialTennis/>
+},{
+    id: 14,
+    name: 'Essential Tennis',
+    icon: <EssentialTennis/>
+},{
+    id: 14,
+    name: 'Essential Tennis',
+    icon: <EssentialTennis/>
 }
 
 ];

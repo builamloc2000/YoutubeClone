@@ -4,7 +4,17 @@ import { ReactComponent as YourVideo } from '../../../assets/icon/yourVideo.svg'
 import { ReactComponent as WatchLater } from '../../../assets/icon/watchLater.svg'
 import { ReactComponent as LikedVideo } from '../../../assets/icon/likedVideo.svg'
 import { ReactComponent as Add } from '../../../assets/icon/add.svg'
-export const OptionData =[{
+import {ReactComponent as Less} from '../../../assets/icon/less.svg'
+export const OptionData =[
+    {
+        id: 0,
+        name: 'Thêm',
+        icon: <Add/>
+    },{
+        id: 1,
+        name: 'Ẩn Bớt',
+        icon: <Less/>
+    },{
     id: 3,
     name: 'Thư viện',
     icon: <Library/>
@@ -25,9 +35,13 @@ export const OptionData =[{
     name: 'Video đã thích',
     icon: <LikedVideo/>
 },{
-    id: 8,
-    name: 'Thêm',
-    icon: <Add/>
+    id: 7,
+    name: 'Video đã thích',
+    icon: <LikedVideo/>
+},{
+    id: 7,
+    name: 'Video đã thích',
+    icon: <LikedVideo/>
 }
 
 ];

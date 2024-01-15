@@ -1,40 +1,53 @@
 import React from 'react'
-import { Video } from '../../dataset/FEData/ContentData/Video';
+//import { Video } from '../../dataset/FEData/ContentData/Video';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
-// export default function Videos() {
-//     const listItems = Video.map(item =>
-//         <li className=' pl-3 pr-3 w-[204px] h-10 items-center'>
-//             <img alt='' src={item.src} />
-//             <p>{item.title}</p>
-//             <p>{item.author}</p>
-//             <p>{item.view} • {item.createTime} </p>
-            
-//             </li>
-        
-//         );
-        
-//     return <ul className="flex ">{listItems}</ul>;
+
+export default function Videos() {
+
+  const [data, setData] = useState([]);
+  const [filteredVideos, setFilteredVideos] = useState([]);
+  const searchQuery = useSelector(state => state.query);
+  useEffect(() => {
+
+    axios
+      .get("https://655d543d9f1e1093c59936e4.mockapi.io/api/v1/data")
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err));
+
+    const videoData = data.slice(53,63)
     
+    const isSearchActive = searchQuery && searchQuery.trim() !== '';
 
-//     }       
-    export default function Videos({searchQuery}) {
-        const isSearchActive = searchQuery && searchQuery.trim() !== '';
-        
-        const filteredVideos = isSearchActive
-    ? Video.filter((item) =>
-        item.title.toLowerCase().includes(searchQuery.toLowerCase())
+    const updatedFilteredVideos = isSearchActive
+      ? videoData.filter((item) =>
+        item.name.toLowerCase().trim().includes(searchQuery.toLowerCase().trim())
       )
-    : Video;
-    const listItems = filteredVideos.map((item) => (
-        <li className='pl-3 pr-3 w-[204px] h-10 items-center' key={item.id}>
-          <img alt='' src={item.src} />
-          <p>{item.title}</p>
-          <p>{item.author}</p>
-          <p>{item.view} • {item.createTime} </p>
-        </li>
-      ));
-            
-        return <ul className="flex ">{listItems}</ul>;
-        
+      : videoData;
+      console.log("a:" ,updatedFilteredVideos)
+    setFilteredVideos(updatedFilteredVideos);
     
-        }
+  }, [searchQuery]);
+ 
+
+
+
+  const listItems = filteredVideos.map((item) => (
+    <li className=' pr-5 w-80 h-52 ' key={item.id}>
+      <img alt='' src={item && item.information && item.information.src} className='rounded-lg w-full h-36' />
+      <p>{item.name}</p>
+      <p>{item && item.information && item.information.author}</p>
+      <p>{item && item.information && item.information.view} • {item && item.information && item.information.createTime} </p>
+    </li>
+  ));
+
+
+
+
+
+  return <ul className="grid grid-cols-4 gap-5 ">{listItems}</ul>;
+
+
+}
