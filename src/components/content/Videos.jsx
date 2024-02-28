@@ -1,8 +1,10 @@
 import React from 'react'
-//import { Video } from '../../dataset/FEData/ContentData/Video';
+
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+
+import {  Link } from 'react-router-dom';
 
 
 export default function Videos() {
@@ -11,43 +13,75 @@ export default function Videos() {
   const [filteredVideos, setFilteredVideos] = useState([]);
   const searchQuery = useSelector(state => state.query);
   useEffect(() => {
-
+    
     axios
-      .get("https://655d543d9f1e1093c59936e4.mockapi.io/api/v1/data")
-      .then((res) => setData(res.data))
+      .get("http://localhost:3001/api/video/videos")
+      .then((res) => setData(res.data), console.log("data", data))
       .catch((err) => console.log(err));
 
-    const videoData = data.slice(53,63)
-    
+
+
     const isSearchActive = searchQuery && searchQuery.trim() !== '';
 
     const updatedFilteredVideos = isSearchActive
-      ? videoData.filter((item) =>
-        item.name.toLowerCase().trim().includes(searchQuery.toLowerCase().trim())
+      ? data.filter((item) =>
+        // item.id.toLowerCase().trim().includes(searchQuery.toLowerCase().trim())
+        item.title.includes(searchQuery)
       )
-      : videoData;
-      console.log("a:" ,updatedFilteredVideos)
-    setFilteredVideos(updatedFilteredVideos);
+      : data;
     
+    setFilteredVideos(updatedFilteredVideos);
+
   }, [searchQuery]);
- 
 
 
+  const handleDelete = (id) => {
+    
+
+
+
+     axios.delete('http://localhost:3001/api/video/' +id)
+        .then(res => {  console.log("ok") })
+        .catch(er => console.log(er))
+    
+};
+const handleUpdate = (id) => {
+  
+};
 
   const listItems = filteredVideos.map((item) => (
     <li className=' pr-5 w-80 h-52 ' key={item.id}>
-      <img alt='' src={item && item.information && item.information.src} className='rounded-lg w-full h-36' />
-      <p>{item.name}</p>
-      <p>{item && item.information && item.information.author}</p>
-      <p>{item && item.information && item.information.view} • {item && item.information && item.information.createTime} </p>
+      <video  className='rounded-lg w-72 h-36 border-2' controls>
+        <source src={`http://localhost:3001/Videos/`+ item.urlVideo} type="video/mp4" />
+        
+      </video>
+      
+
+
+      
+      <p>{item.title}</p>
+      <p>{item.description}
+      <button onClick={()=>{handleDelete(item.id)}} className="bg-yellow-500">delete</button>
+      
+      </p> 
+      <p>{item.createVideo}
+      <button onClick={()=>{handleUpdate(item.id)}} className="bg-yellow-500">
+      <Link to={`/updateVideo/${item.id}`}>update</Link>
+        </button>
+      
+      </p> 
     </li>
-  ));
+
+
+  )
+  );
 
 
 
 
 
-  return <ul className="grid grid-cols-4 gap-5 ">{listItems}</ul>;
+
+  return <ul className="grid grid-cols-5 gap-5 ">{listItems}</ul>;
 
 
 }

@@ -7,6 +7,7 @@ import { ReactComponent as Notification } from '../assets/icon/notification.svg'
 import { ReactComponent as Avatar } from '../assets/avatar/avatar.svg'
 import Search from './Search'
 import { useState } from 'react'
+import {  Link } from 'react-router-dom';
 
 export default function Header(){
     const [state] = useState(true)
@@ -28,8 +29,15 @@ export default function Header(){
                 <Search />
                 
             </div>
-            <div className="flex w-[7%] justify-between items-center ">
-                <CreateVideo />
+            <div className="flex w-[7%] justify-between items-center  ">
+            
+                
+                    <div>
+                        <Link to='/addVideo'><CreateVideo /></Link>
+                        
+                    </div>
+                    
+                    
                 <Notification />
                 <Avatar />
             </div>

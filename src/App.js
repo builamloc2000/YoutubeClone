@@ -1,26 +1,31 @@
 import React from "react";
-import Header from "./components/Header";
-import SideBar from "./components/SideBar";
-import Content from "./components/Content";
 
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-
+import HomePage from "./components/Home"
+import Layout from "./components/Layout"
+import AddVideo from "./components/header/addVideo";
+import UpdateVideo from "./components/header/updateVideo"
 export default function App() {
-  
-    
-  return (
-    <div className='w-full h-full'>
-      <div className="bg-white w-full h-full ">
-        
-        
-        <Header  />
-      </div>
-      <div className=" flex flex-row  max-h-screen  ">
-        <SideBar  />
 
-        <Content />
-      </div>
-    </div>
+
+  return (
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Layout />}/ >
+      <Route index element={<HomePage />} />
+      <Route path='/addVideo' element={<AddVideo />} />    
+      <Route path='/updateVideo/:id' element={<UpdateVideo/>}/> 
+
+
+
+    </Routes>
+    </BrowserRouter>
+
+     
+
+    
+
   );
 };
 

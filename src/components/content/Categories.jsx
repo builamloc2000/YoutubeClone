@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Category } from "../../dataset/FEData/ContentData/Categogy";
+
 import axios from "axios";
 
 export default function Categogy() {
